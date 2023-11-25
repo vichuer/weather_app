@@ -1,6 +1,8 @@
-# weather_app
+# Weather App
 
-A new Flutter project.
+A brief description of what this project does and who it's for
+
+This project is a coding challenge for HeyFlutter․com. The project is a weather app which tells current weather and wetaher forecasts.The app offers a clean and intuitive interface, allowing users to effortlessly access essential weather data for their location and other locations of interest.
 
 ## Getting Started
 
