@@ -1,8 +1,5 @@
 import 'dart:developer';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:weather_app/src/env/apis.dart';
 import 'package:weather_app/src/env/keys.dart';
 import 'package:weather_app/src/models/auto_complete_model.dart';
@@ -36,7 +33,9 @@ class SaveLocationProvider extends ChangeNotifier {
             humidity: item['humidity'],
             wind: item['wind'],
             temperature: item['temperature'],
-            weatherImage: item['weatherImage']))
+            weatherImage: item['weatherImage'],
+            lat: item['lat'],
+            long: item['long']))
         .toList();
 
     log(savedLocations.toString());
@@ -44,8 +43,8 @@ class SaveLocationProvider extends ChangeNotifier {
   }
 
   //Save new location's weather data
-  Future saveNewLocation(
-      location, weather, humidity, wind, temperature, weatherImage) async {
+  Future saveNewLocation(location, weather, humidity, wind, temperature,
+      weatherImage, lat, long) async {
     DBHelper.database();
     final newLocation = LocationModel(
         location: '$location',
@@ -53,7 +52,9 @@ class SaveLocationProvider extends ChangeNotifier {
         humidity: '$humidity',
         wind: '$wind',
         temperature: '$temperature',
-        weatherImage: '$weatherImage');
+        weatherImage: '$weatherImage',
+        lat: '$lat',
+        long: '$long');
 
     await DBHelper.insert(DBHelper.savedLocations, {
       'location': newLocation.location,
@@ -62,6 +63,8 @@ class SaveLocationProvider extends ChangeNotifier {
       'wind': newLocation.wind,
       'temperature': newLocation.temperature,
       'weatherImage': newLocation.weatherImage,
+      'lat': newLocation.lat,
+      'long': newLocation.long
     });
     notifyListeners();
   }
@@ -128,9 +131,9 @@ class SaveLocationProvider extends ChangeNotifier {
         .then((response) {
       if (response != null) {
         var json = response.data;
+
         currentWeatherModel = CurrentWeatherModel.fromJson(json);
-        print(
-            '()()()()()()()()()()()()  ${currentWeatherModel.current?.condition?.icon}');
+
         currentWeatherLoading = false;
         notifyListeners();
       }

@@ -12,6 +12,8 @@ class DBHelper {
         db.execute(
             'CREATE TABLE IF NOT EXISTS $savedLocations(id INTEGER PRIMARY KEY AUTOINCREMENT ,'
             ' location TEXT,'
+            ' lat TEXT,'
+            ' long TEXT,'
             ' weather TEXT,'
             ' humidity TEXT,'
             ' wind TEXT,'

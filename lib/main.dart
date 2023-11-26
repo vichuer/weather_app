@@ -5,7 +5,9 @@ import 'package:weather_app/src/env/theme.dart';
 import 'package:weather_app/src/providers/homeProvider.dart';
 import 'package:weather_app/src/providers/save_location_provider.dart';
 import 'package:weather_app/src/screens/home/home.dart';
+import 'package:weather_app/src/services/db_helper.dart';
 import 'package:weather_app/src/services/navigation_service.dart';
+import 'package:weather_app/src/services/sharedpreference_service.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -18,6 +20,8 @@ void main() {
     ],
     child: const MyApp(),
   ));
+  SharedPreferencesService().setPreferences();
+  DBHelper.database();
 }
 
 class MyApp extends StatelessWidget {

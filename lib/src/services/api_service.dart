@@ -21,6 +21,7 @@ class ApiService {
       {required ApiMethod method,
       required String url,
       required String baseURL,
+      String? token,
       var data,
       var queryParameters,
       Function(int, int)? onSendProgress,
@@ -29,6 +30,10 @@ class ApiService {
     // dio.options.baseUrl = weather;
     dio.options.connectTimeout = const Duration(seconds: 10);
     dio.options.receiveTimeout = const Duration(seconds: 10);
+
+    if (token != null) {
+      dio.options.headers['Authorization'] = token;
+    }
 
     try {
       Response? response;

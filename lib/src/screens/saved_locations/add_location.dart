@@ -71,16 +71,20 @@ class AddLocation extends StatelessWidget {
                                       provider
                                           .currentWeatherModel.current!.humidity
                                           .toString(),
-                                      provider
-                                          .currentWeatherModel.current!.windKph
+                                      provider.currentWeatherModel.current!.windKph
                                           .toString(),
                                       provider
                                           .currentWeatherModel.current!.tempC
                                           .toString(),
-                                      "https:${provider.currentWeatherModel.current!.condition?.icon ?? ""}")
+                                      "https:${provider.currentWeatherModel.current!.condition?.icon ?? ""}",
+                                      provider
+                                          .currentWeatherModel.location!.lat,
+                                      provider
+                                          .currentWeatherModel.location!.lon)
                                   .then((value) {
                                 Fluttertoast.showToast(
                                     msg: 'Added Successfully');
+                                provider.getSavedLocations();
                                 pop();
                               });
                             },

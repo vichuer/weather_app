@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:weather_app/src/providers/homeProvider.dart';
 import 'package:weather_app/src/providers/save_location_provider.dart';
 import 'package:weather_app/src/screens/saved_locations/add_location.dart';
 import 'package:weather_app/src/screens/widgets/loader.dart';
 import 'package:weather_app/src/screens/widgets/no_data.dart';
 import 'package:weather_app/src/services/navigation_service.dart';
+import 'package:weather_app/src/services/sharedpreference_service.dart';
 
 import 'widgets/gradient_bg.dart';
 import 'widgets/saved_location_tile.dart';
@@ -60,25 +62,55 @@ class SavedLocations extends StatelessWidget {
                                             itemCount: locProvider
                                                 .savedLocations.length,
                                             itemBuilder: (context, index) =>
-                                                SaveLocationTile(
-                                                    location: locProvider
+                                                InkWell(
+                                              onTap: () {
+                                                var homeProvider =
+                                                    Provider.of<HomeProvider>(
+                                                        context,
+                                                        listen: false);
+                                                var prefs =
+                                                    SharedPreferencesService
+                                                        .prefs;
+
+                                                prefs.setString(
+                                                    'lat',
+                                                    locProvider
                                                         .savedLocations[index]
-                                                        .location,
-                                                    weather: locProvider
+                                                        .lat);
+                                                prefs.setString(
+                                                    'long',
+                                                    locProvider
                                                         .savedLocations[index]
-                                                        .weather,
-                                                    humidity: locProvider
+                                                        .long);
+                                                homeProvider.getForecastWeather(
+                                                    locProvider
                                                         .savedLocations[index]
-                                                        .humidity,
-                                                    wind: locProvider
+                                                        .lat,
+                                                    locProvider
                                                         .savedLocations[index]
-                                                        .wind,
-                                                    temperature: locProvider
-                                                        .savedLocations[index]
-                                                        .temperature,
-                                                    image: locProvider
-                                                        .savedLocations[index]
-                                                        .weatherImage),
+                                                        .long);
+                                                pop();
+                                              },
+                                              child: SaveLocationTile(
+                                                  location: locProvider
+                                                      .savedLocations[index]
+                                                      .location,
+                                                  weather: locProvider
+                                                      .savedLocations[index]
+                                                      .weather,
+                                                  humidity: locProvider
+                                                      .savedLocations[index]
+                                                      .humidity,
+                                                  wind: locProvider
+                                                      .savedLocations[index]
+                                                      .wind,
+                                                  temperature: locProvider
+                                                      .savedLocations[index]
+                                                      .temperature,
+                                                  image: locProvider
+                                                      .savedLocations[index]
+                                                      .weatherImage),
+                                            ),
                                           ),
                               ))),
                 Container(

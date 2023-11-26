@@ -10,4 +10,6 @@ class Apis {
 
   static String placeDetails =
       'https://maps.googleapis.com/maps/api/place/details/json?key=${AuthKeys.locationKey}';
+
+  static String pexelsApi = 'https://api.pexels.com/v1/search?';
 }

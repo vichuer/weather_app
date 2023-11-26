@@ -6,12 +6,14 @@ class CurrentWeatherTile extends StatelessWidget {
   final bool isMini;
   final String temperature;
   final String icon;
+  final String weather;
 
   const CurrentWeatherTile(
       {super.key,
       required this.isMini,
       required this.temperature,
-      required this.icon});
+      required this.icon,
+      this.weather = ''});
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +23,21 @@ class CurrentWeatherTile extends StatelessWidget {
         Center(
           child: Image.network(
             icon,
+            height: isMini ? 65 : 100,
+            width: isMini ? 65 : 100,
+            fit: BoxFit.cover,
           ),
         ),
-        SizedBox(
-          height: isMini ? 10 : 20,
-        ),
+        // SizedBox(
+        //   height: 10,
+        // ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (!isMini)
               Text(
-                'Clouds',
+                weather,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: isMini ? 25 : 40,

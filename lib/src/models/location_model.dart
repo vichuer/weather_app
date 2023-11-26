@@ -6,6 +6,8 @@ class LocationModel {
   final String wind;
   final String temperature;
   final String weatherImage;
+  final String lat;
+  final String long;
 
   LocationModel(
       {this.id,
@@ -14,5 +16,7 @@ class LocationModel {
       required this.humidity,
       required this.wind,
       required this.temperature,
-      required this.weatherImage});
+      required this.weatherImage,
+      required this.lat,
+      required this.long});
 }

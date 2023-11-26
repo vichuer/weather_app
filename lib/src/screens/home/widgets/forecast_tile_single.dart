@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:weather_app/src/models/forecast_weather_model.dart';
 
 class ForecastTileSingle extends StatelessWidget {
-  const ForecastTileSingle({
-    Key? key,
-  }) : super(key: key);
+  final Forecastday forecastday;
+
+  const ForecastTileSingle({super.key, required this.forecastday});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Text(
-          'Wed 16',
+          DateFormat('MMM dd').format(forecastday.date ?? DateTime.now()),
           style: TextStyle(
               color: Colors.white, fontSize: 14, fontWeight: FontWeight.w400),
         ),
-        Icon(
-          Icons.cloud,
-          color: Colors.white,
-          size: 40,
+        Image.network(
+          'httpS:${forecastday.day!.condition!.icon ?? ""}',
+          height: 55,
         ),
         Column(
           children: [
             Text(
-              '29º',
+              '${forecastday.day!.avgtempC!.toStringAsFixed(0)}º',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 16,
@@ -34,7 +35,7 @@ class ForecastTileSingle extends StatelessWidget {
               height: 5,
             ),
             Text(
-              '1-5\nkm/h',
+              '${forecastday.day!.maxwindKph!}\nkm/h',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
