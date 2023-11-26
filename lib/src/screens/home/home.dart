@@ -44,14 +44,15 @@ class _HomeScreenState extends State<HomeScreen> {
             color: Colors.black.withOpacity(0.6),
             colorBlendMode: BlendMode.darken,
           ),
-          Image.network(
-            homeProvider.bgImage,
-            width: size.width,
-            height: size.height,
-            fit: BoxFit.cover,
-            color: Colors.black.withOpacity(0.6),
-            colorBlendMode: BlendMode.darken,
-          ),
+          if (homeProvider.bgImage.isNotEmpty)
+            Image.network(
+              homeProvider.bgImage,
+              width: size.width,
+              height: size.height,
+              fit: BoxFit.cover,
+              color: Colors.black.withOpacity(0.6),
+              colorBlendMode: BlendMode.darken,
+            ),
           if (homeProvider.currentWeatherModel.location != null)
             CustomAppBar(
               currentLocation:

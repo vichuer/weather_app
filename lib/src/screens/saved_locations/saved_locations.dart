@@ -26,11 +26,13 @@ class SavedLocations extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: AppBar(
-                    automaticallyImplyLeading: false,
+                    leading: BackButton(),
                     title: const Text('Saved Locations'),
                     actions: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          push(context, const AddLocation());
+                        },
                         child: Image.asset(
                           'assets/search.png',
                           width: 32,
@@ -115,7 +117,7 @@ class SavedLocations extends StatelessWidget {
                               ))),
                 Container(
                   height: 60,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                   decoration: BoxDecoration(
                       color: Colors.grey.withOpacity(0.45),
                       borderRadius: BorderRadius.circular(24)),
