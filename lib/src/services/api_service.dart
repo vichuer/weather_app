@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -16,7 +17,7 @@ class ApiService {
   static Dio dio = Dio();
 
   ///api method set up
-  static Future<Response<dynamic>?> ApiMethodSetup(
+  static Future<Response<dynamic>?> apiMethodSetup(
       {required ApiMethod method,
       required String url,
       required String baseURL,
@@ -34,6 +35,7 @@ class ApiService {
       switch (method) {
         case ApiMethod.get:
           if (data != null) {
+            log(url);
             response = await dio.get(url,
                 queryParameters: data, options: options ?? Options());
           } else {

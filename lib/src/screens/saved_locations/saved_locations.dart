@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_app/src/providers/homeProvider.dart';
 import 'package:weather_app/src/providers/save_location_provider.dart';
 import 'package:weather_app/src/screens/saved_locations/add_location.dart';
 import 'package:weather_app/src/screens/widgets/loader.dart';

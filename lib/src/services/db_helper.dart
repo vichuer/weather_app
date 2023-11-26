@@ -57,7 +57,7 @@ class DBHelper {
   //delete table
   static Future deleteTable(String table) async {
     final db = await DBHelper.database();
-    return db.rawDelete('DELETE FROM ${table}');
+    return db.rawDelete('DELETE FROM $table');
   }
 
   //show items by id

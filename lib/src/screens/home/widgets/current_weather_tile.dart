@@ -1,9 +1,17 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class CurrentWeatherTile extends StatelessWidget {
   final bool isMini;
+  final String temperature;
+  final String icon;
 
-  const CurrentWeatherTile({super.key, this.isMini = false});
+  const CurrentWeatherTile(
+      {super.key,
+      required this.isMini,
+      required this.temperature,
+      required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -11,10 +19,8 @@ class CurrentWeatherTile extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Center(
-          child: Icon(
-            Icons.sunny,
-            color: Colors.amber,
-            size: isMini ? 35 : 50,
+          child: Image.network(
+            icon,
           ),
         ),
         SizedBox(
@@ -36,7 +42,7 @@ class CurrentWeatherTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '30',
+                  temperature,
                   style: TextStyle(
                       shadows: const <Shadow>[
                         Shadow(

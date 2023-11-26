@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
       //  backgroundColor: const Color.fromARGB(255, 34, 10, 62),
-      endDrawer: SavedLocations(),
+      endDrawer: const SavedLocations(),
       body: Stack(
         children: [
           Image.asset(
@@ -41,15 +41,15 @@ class _HomeScreenState extends State<HomeScreen> {
             colorBlendMode: BlendMode.darken,
           ),
           const CustomAppBar(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 40),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Center(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: const [
+                    children: [
                       Text(
                         'June 07',
                         style: TextStyle(color: Colors.white, fontSize: 40),
@@ -64,16 +64,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                const CurrentWeatherTile(),
+                CurrentWeatherTile(icon: '', temperature: '', isMini: false),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     CurrentDetailTile(type: 'humidity', value: '59 %'),
                     CurrentDetailTile(type: 'wind', value: '4.6 km/h'),
                     CurrentDetailTile(type: 'feels like', value: '29ºC'),
                   ],
                 ),
-                const ForecastTile()
+                ForecastTile()
               ],
             ),
           )

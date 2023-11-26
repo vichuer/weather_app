@@ -39,7 +39,7 @@ class SaveLocationTile extends StatelessWidget {
                     children: [
                       Text(
                         location,
-                        style: TextStyle(
+                        style: const TextStyle(
                             shadows: <Shadow>[
                               Shadow(
                                 offset: Offset(0.0, 3.0),
@@ -51,12 +51,12 @@ class SaveLocationTile extends StatelessWidget {
                             fontSize: 24,
                             fontWeight: FontWeight.w700),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Text(
                         weather,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.w500),
@@ -122,6 +122,8 @@ class SaveLocationTile extends StatelessWidget {
             ),
             CurrentWeatherTile(
               isMini: true,
+              icon: image,
+              temperature: temperature,
             )
           ],
         ),

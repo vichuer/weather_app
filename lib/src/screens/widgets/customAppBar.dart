@@ -11,8 +11,8 @@ class CustomAppBar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
       child: AppBar(
-        title: Row(
-          children: const [
+        title: const Row(
+          children: [
             Icon(
               CupertinoIcons.location_solid,
             ),

@@ -5,6 +5,7 @@ import 'package:weather_app/src/env/theme.dart';
 import 'package:weather_app/src/providers/homeProvider.dart';
 import 'package:weather_app/src/providers/save_location_provider.dart';
 import 'package:weather_app/src/screens/home/home.dart';
+import 'package:weather_app/src/services/navigation_service.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: navigatorKey,
       title: 'The Weather App',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,

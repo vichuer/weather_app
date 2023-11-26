@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../env/theme.dart';
 import 'forecast_tile_single.dart';
 
 class ForecastTile extends StatelessWidget {
@@ -15,9 +14,9 @@ class ForecastTile extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.grey.withOpacity(0.6),
           borderRadius: BorderRadius.circular(24)),
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: const [
+        children: [
           ForecastTileSingle(),
           ForecastTileSingle(),
           ForecastTileSingle(),
